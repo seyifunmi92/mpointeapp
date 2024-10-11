@@ -1,5 +1,6 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:mpointe/core/extensions/layoutextensions.dart';
 
 extension ImageExt on dynamic {
   Widget toCircleImage({double? radius, Color? color}) => CircleAvatar(
@@ -12,6 +13,19 @@ extension ImageExt on dynamic {
         radius: radius ?? 20,
         backgroundColor: color ?? Colors.transparent,
         child: SvgPicture.asset(this),
+      );
+
+  Widget toCircle({double? radius, Color? color}) => CircleAvatar(
+        child: this,
+        backgroundColor: color ?? Colors.white,
+        radius: radius ?? 30,
+      );
+
+  Widget toContainer({double? radius, double? height, double? width, Color? color}) => Container(
+        height: height ?? 50.h,
+        width: width ?? 50.w,
+        child: this,
+        decoration: BoxDecoration(color: color ?? Colors.white, borderRadius: BorderRadius.circular(radius ?? 0)),
       );
 
   Widget get toClipRect => ClipRect(
