@@ -1,10 +1,10 @@
 import 'dart:io';
-import 'dart:developer';
 import 'dart:typed_data';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
+import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
 // ignore_for_file: curly_braces_in_flow_control_structures
 
@@ -23,28 +23,28 @@ class ImageBuilder {
 
   Widget get buildAssetImage => Image.asset(
         path ?? "",
-        height: height ?? 10,
+        height: height ?? 10.h,
         fit: fit,
         color: color,
       );
 
   Widget get buildNtwkmage => Image.network(
         url ?? "",
-        height: height ?? 10,
+        height: height ?? 10.h,
         fit: fit,
         color: color,
       );
 
   Widget get buildFileImage => Image.file(
         file!,
-        height: height ?? 10,
+        height: height ?? 10.h,
         fit: fit,
         color: color,
       );
 
   Widget get buildBytesImage => Image.memory(
         bytes!,
-        height: height ?? 10,
+        height: height ?? 10.h,
         fit: fit,
         color: color,
       );

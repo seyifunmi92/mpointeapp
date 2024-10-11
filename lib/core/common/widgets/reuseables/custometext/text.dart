@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:mpointe/core/constants/fonts.dart';
+import 'package:mpointe/core/extensions/layoutextensions.dart';
 
 // ignore: must_be_immutable
 class IText extends StatelessWidget {
@@ -27,11 +28,11 @@ class IText extends StatelessWidget {
           TextStyle(
             height: textHeight,
             decoration: decoration,
-            fontSize: fontSize ?? 10,
+            fontSize: fontSize ?? 10.h,
             fontWeight: fontWeight ?? FontWeight.normal,
             fontFamily: fontFamily ?? IFonts.josefin,
             letterSpacing: letterSpacing,
-            color: fontColor ,
+            color: fontColor,
           ),
       softWrap: softWrap,
       overflow: overflow,

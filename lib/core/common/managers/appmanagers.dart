@@ -7,7 +7,6 @@ class AppManagers {
   AppManagers._();
   static AppManagers instance = AppManagers._();
 
-  ///app managers
   MyApp get app => get<MyApp>();
   static MApp materialApp = get<MApp>();
 }
