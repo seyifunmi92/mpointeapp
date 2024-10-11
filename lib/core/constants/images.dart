@@ -6,4 +6,12 @@ class Images {
   String get placeHolder1 => "placeholder".tosvg;
 
   String get headshot => "Oluwaseyiheadshot".topng;
+
+  String get kitchen => "kitchen".tojpg;
+
+  String get flower => "flowerinterior".topng;
+
+  String get greenroom => "greenroom".topng;
+
+
 }

@@ -1,5 +1,6 @@
 import 'package:mpointe/main.dart';
 import 'package:mpointe/core/app/app.dart';
+import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
 
@@ -13,4 +14,8 @@ class AppManagers {
 
 class ImageHandler {
   static Images img = get<Images>();
+}
+
+class ShowModals {
+  static Modal modals = get<Modal>();
 }

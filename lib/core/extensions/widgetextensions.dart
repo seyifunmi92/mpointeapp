@@ -32,6 +32,15 @@ extension ImageExt on dynamic {
         child: this,
       );
 
+  Widget toRoundImage({double? radius, double? clipheight, double? clipwidth}) => ClipRRect(
+        borderRadius: BorderRadius.circular(radius ?? 0),
+        child: SizedBox(
+          width: clipwidth ?? 50.w,
+          height: clipheight ?? 100.h,
+          child: this,
+        ),
+      );
+
   String get topng => "assets/images/png/$this.png";
 
   String get tojpg => "assets/images/jpg/$this.jpg";

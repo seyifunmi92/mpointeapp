@@ -6,11 +6,13 @@ import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 
 class AppBody extends StatelessWidget {
   Widget? child;
-  AppBody({super.key, this.child});
+  Widget? bottomNav;
+  AppBody({super.key, this.child, this.bottomNav});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: Colors.transparent,
       body: Container(
         decoration: BoxDecoration(
@@ -24,6 +26,7 @@ class AppBody extends StatelessWidget {
           child: child ?? Container(),
         ),
       ),
+      bottomNavigationBar: bottomNav,
     );
   }
 }

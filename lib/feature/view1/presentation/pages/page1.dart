@@ -7,9 +7,12 @@ import 'package:mpointe/core/extensions/contextextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgets/appbar.dart';
 import 'package:mpointe/core/common/widgets/reuseables/base/scaffoldgradient.dart';
+import 'package:mpointe/feature/view1/presentation/widgets/widgets/bottom_nav.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/appbarargs.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgets/orange_circle.dart';
+import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/bottom_nav_args.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/orange_circle_args.dart';
+// ignore_for_file: prefer_const_constructors
 
 class Page1 extends StatefulWidget {
   const Page1({super.key});
@@ -24,6 +27,9 @@ class _Page1State extends State<Page1> {
         children: [
           ///first widget in stack
           AppBody(
+            bottomNav: BottomNav(
+              args: BottomNavArgs(height: 600.h),
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

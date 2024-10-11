@@ -1,5 +1,6 @@
 import 'package:mpointe/main.dart';
 import 'package:mpointe/core/app/app.dart';
+import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
 
@@ -10,4 +11,6 @@ Future<void> initializeServiceLocator() async => get
   ..registerLazySingleton<Images>(() => Images())
 
   ///register material app
-  ..registerFactory<MApp>(() => MApp());
+  ..registerFactory<MApp>(() => MApp())
+
+  ..registerSingleton<Modal>(Modal.instance);
