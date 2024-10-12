@@ -3,6 +3,7 @@ import 'package:mpointe/core/app/app.dart';
 import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
+import 'package:mpointe/core/helpers/bLogic/operations.dart';
 
 Future<void> initializeServiceLocator() async => get
 
@@ -12,5 +13,8 @@ Future<void> initializeServiceLocator() async => get
 
   ///register material app
   ..registerFactory<MApp>(() => MApp())
+  ..registerSingleton<Modal>(Modal.instance)
 
-  ..registerSingleton<Modal>(Modal.instance);
+  ///logic
+  ..registerSingleton<LogicOperations>(Operations.instance)
+  ..registerSingleton<Operations>(Operations.instance);

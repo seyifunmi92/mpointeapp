@@ -3,6 +3,10 @@ import 'package:mpointe/core/app/app.dart';
 import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
+import 'package:mpointe/core/helpers/bLogic/operations.dart';
+
+
+
 
 class AppManagers {
   AppManagers._();
@@ -11,11 +15,19 @@ class AppManagers {
   MyApp get app => get<MyApp>();
   static MApp materialApp = get<MApp>();
 }
-
+///image handler
 class ImageHandler {
   static Images img = get<Images>();
 }
 
+///modal handler
 class ShowModals {
   static Modal modals = get<Modal>();
+}
+
+
+///business logic handler
+class Logic {
+  static LogicOperations logicoperations = get<LogicOperations>();
+  static Operations call = get<Operations>();
 }

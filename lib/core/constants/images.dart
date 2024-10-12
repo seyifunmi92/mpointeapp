@@ -13,5 +13,5 @@ class Images {
 
   String get greenroom => "greenroom".topng;
 
-
+  String get map => "mapimage".tojpg;
 }

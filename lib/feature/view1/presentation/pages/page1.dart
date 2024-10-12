@@ -28,7 +28,7 @@ class _Page1State extends State<Page1> {
           ///first widget in stack
           AppBody(
             bottomNav: BottomNav(
-              args: BottomNavArgs(height: 600.h),
+              args: BottomNavArgs(height: 520.h),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

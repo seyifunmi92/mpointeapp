@@ -10,5 +10,5 @@ extension MQs on BuildContext {
 
   push(Widget route) => Navigator.push(this, MaterialPageRoute(builder: (builder) => route));
 
-  pop() => Navigator.canPop(this);
+  dynamic get pop => Navigator.canPop(this);
 }

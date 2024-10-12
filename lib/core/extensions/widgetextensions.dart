@@ -1,5 +1,7 @@
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
+import 'package:mpointe/core/utils/modals.dart';
+import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 
 extension ImageExt on dynamic {
@@ -40,6 +42,16 @@ extension ImageExt on dynamic {
           child: this,
         ),
       );
+
+  Widget toRow() => Row(
+        children: [this],
+      );
+
+  dynamic toDialog(context) async => await ShowModals.modals.showAppDialog(context, child: this);
+
+  dynamic toDialogCupertino(context) async => await ShowModals.modals.showCupertino(context, child: this);
+
+  Future<dynamic> toFuture(int sec) async => await Future.delayed(Duration(seconds: sec), () => this);
 
   String get topng => "assets/images/png/$this.png";
 

@@ -27,7 +27,10 @@ class BottomNav extends StatelessWidget {
                 ///first image stack
                 Stack(
                   children: [
-                    ImageBuilder(path: ImageHandler.img.kitchen, fit: BoxFit.contain,).getImage.toRoundImage(radius: 30, clipheight: 100.h, clipwidth: context.maxWidth),
+                    ImageBuilder(
+                      path: ImageHandler.img.kitchen,
+                      fit: BoxFit.contain,
+                    ).getImage.toRoundImage(radius: 30, clipheight: 244.h, clipwidth: context.maxWidth),
                     SwipeOnImage(
                         args: SwipeImageArgs(
                       height: 180,
@@ -40,7 +43,7 @@ class BottomNav extends StatelessWidget {
 
                 10.toSizeH,
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Stack(
                       children: [
@@ -48,22 +51,29 @@ class BottomNav extends StatelessWidget {
                           path: ImageHandler.img.flower,
                           fit: BoxFit.fitWidth,
                           height: 280.h,
-                        ).getImage.toRoundImage(
-                              radius: 30,
-                            ),
-                        SwipeOnImage(args: SwipeImageArgs(height: 220, radius: 20, label: 'Gladlova St, 25', fontSize: 10.fsize, width: 140.w))
+                        ).getImage.toRoundImage(radius: 30, clipheight: 450.h / 2, clipwidth: 185.w),
+                        SwipeOnImage(
+                            args: SwipeImageArgs(
+                          height: 165,
+                          radius: 20,
+                          label: 'Trefoleva St., 43',
+                          fontSize: 10.fsize,
+                          width: 145.w,
+                        ))
                       ],
                     ),
                     Stack(
                       children: [
                         ImageBuilder(
                           path: ImageHandler.img.greenroom,
-                          fit: BoxFit.fitWidth,
+                          fit: BoxFit.fitHeight,
                           height: 150.h,
                         ).getImage.toRoundImage(
                               radius: 30,
+                              clipheight: 450.h / 2,
+                              clipwidth: 185.w,
                             ),
-                        SwipeOnImage(args: SwipeImageArgs(height: 220, radius: 20, label: 'Gladlova St, 25', fontSize: 10.fsize, width: 140.w))
+                        SwipeOnImage(args: SwipeImageArgs(height: 165, radius: 20, label: 'Sedova St., 22', fontSize: 10.fsize, width: 140.w))
                       ],
                     ),
                   ],
