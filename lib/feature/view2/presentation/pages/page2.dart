@@ -1,4 +1,7 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
@@ -6,6 +9,7 @@ import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/variants.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/mapwidget.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/textfield.dart';
+import 'package:mpointe/feature/view2/presentation/widgets/widgets/cosyareasdialog.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/orangecontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/filtercontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/locations_avatar.dart';
@@ -20,6 +24,7 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2> {
   @override
   void initState() {
+    Logic.logicoperations.callFutureMethod(1, () => CosyAreaDialog().toDialog(context));
     super.initState();
   }
 

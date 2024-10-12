@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:mpointe/core/constants/colors.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
+import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
 
 class Modal {
   Modal._internal();
@@ -39,15 +41,13 @@ class Modal {
     return await showCupertinoModalPopup(context: context, barrierDismissible: true, useRootNavigator: true, builder: (context) => child ?? 1.toSizeH);
   }
 
-  // getCurrentTheme(context) => MediaQuery.of(context).platformBrightness.name;
-
-  // showSnackBar(BuildContext cxt, String value, {Animation<double>? animation}) => ScaffoldMessenger.of(cxt).showSnackBar(SnackBar(
-  //       animation: animation,
-  //       duration: Duration(seconds: 1),
-  //       backgroundColor: itheme == ThemeEnum.dark ? ColorHelper.blackcontainer2 : ColorHelper.whitecontainer2,
-  //       content: IText(
-  //         value: value,
-  //         fontColor: itheme == ThemeEnum.dark ? ColorHelper.white : ColorHelper.black,
-  //       ),
-  //     ));
+  showSnackBar(BuildContext cxt, String value, {Animation<double>? animation}) => ScaffoldMessenger.of(cxt).showSnackBar(SnackBar(
+        animation: animation,
+        duration: const Duration(seconds: 1),
+        backgroundColor: ColorHelper.whitecontainer2,
+        content: IText(
+          value: value,
+          fontColor: ColorHelper.black,
+        ),
+      ));
 }

@@ -42,6 +42,9 @@ class BottomNav extends StatelessWidget {
                 ),
 
                 10.toSizeH,
+
+
+                ///
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -62,6 +65,9 @@ class BottomNav extends StatelessWidget {
                         ))
                       ],
                     ),
+
+                    
+                    ///
                     Stack(
                       children: [
                         ImageBuilder(
@@ -73,6 +79,7 @@ class BottomNav extends StatelessWidget {
                               clipheight: 450.h / 2,
                               clipwidth: 185.w,
                             ),
+                            ///
                         SwipeOnImage(args: SwipeImageArgs(height: 165, radius: 20, label: 'Sedova St., 22', fontSize: 10.fsize, width: 140.w))
                       ],
                     ),

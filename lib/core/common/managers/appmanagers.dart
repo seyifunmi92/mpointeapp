@@ -3,11 +3,12 @@ import 'package:mpointe/core/app/app.dart';
 import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
-import 'package:mpointe/core/helpers/bLogic/operations.dart';
+import 'package:mpointe/core/helpers/bLogic/operations/operations.dart';
 
 
 
 
+///app handler
 class AppManagers {
   AppManagers._();
   static AppManagers instance = AppManagers._();
