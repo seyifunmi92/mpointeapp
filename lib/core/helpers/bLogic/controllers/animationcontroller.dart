@@ -1,7 +1,7 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
+// ignore_for_file: prefer_final_fields, prefer_const_constructors
 
 class AnimationCtrl implements IAnimationCtrl {
   AnimationCtrl._internal();
@@ -22,9 +22,13 @@ class AnimationCtrl implements IAnimationCtrl {
 
   final Random _rnd = Random();
 
+  Duration _icontrollerDuration = Duration(seconds: 3);
+
+  Duration get icontrollerDuration => _icontrollerDuration;
+
   ///initialize controller
   @override
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? sec}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: sec ?? 3));
+  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 4));
 
   ///set direction
   @override
@@ -46,8 +50,16 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///initialize animation
   @override
-  initAnimation(TickerProvider vsync, {int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false}) async {
-    await initializeAnimationCtrl(vsync);
+  initAnimation(
+    TickerProvider vsync,
+   {
+    int? sec,
+    bool isforward = true,
+    bool isReverse = false,
+    bool isfling = false,
+    bool isRepeated = false,
+  }) async {
+    await initializeAnimationCtrl(vsync, s: sec);
 
     await setAnimationDirection();
 
@@ -57,7 +69,7 @@ class AnimationCtrl implements IAnimationCtrl {
   ///Tunns animation
   @override
   Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener}) async {
-    Animation<double> x = Tween(begin: 0.0, end: y).animate(controller!)
+    Animation<double> x = Tween(begin: 0.0, end: y).animate(controller ?? _icontroller)
       ..addListener(listener!)
       ..addStatusListener((status) {});
 
@@ -72,7 +84,9 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///Fade animation
   @override
-  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve}) async => CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.bounceInOut);
+  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve}) async {
+    return CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.fastOutSlowIn);
+  }
 
   ///count offset animation
   @override
@@ -81,4 +95,8 @@ class AnimationCtrl implements IAnimationCtrl {
   ///get counter value
   @override
   Future<Animation<double>> getCounterValue(value, {AnimationController? controller}) async => Tween<double>(begin: 0, end: (_counter += _rnd.nextInt(value) + 2)).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.fastOutSlowIn));
+
+  updateControllerDuration(int s) {
+    _icontrollerDuration = Duration(seconds: s);
+  }
 }

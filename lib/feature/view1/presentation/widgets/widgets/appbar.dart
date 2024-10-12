@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/constants/colors.dart';
-import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
-import 'package:mpointe/core/common/widgets/reuseables/image_handler/imagebulder.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/appbarargs.dart';
 // ignore_for_file: must_be_immutable
 
@@ -44,7 +42,7 @@ class IAppBar extends StatelessWidget {
             ),
           ),
         ),
-        ImageBuilder(radius: 25, path: ImageHandler.img.headshot).getImage,
+        args.widget!,
       ],
     );
   }

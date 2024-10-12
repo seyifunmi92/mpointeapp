@@ -7,6 +7,7 @@ class AppBarArgs {
   String? title;
   double? iconSize;
   double? fontSize;
+  Widget? widget;
 
-  AppBarArgs({this.width, this.height, this.icon, this.title, this.iconSize, this.fontSize});
+  AppBarArgs({this.width, this.height, this.icon, this.title, this.iconSize, this.fontSize, this.widget});
 }

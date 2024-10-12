@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 abstract class IAnimationCtrl {
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? sec});
+  Future<AnimationController> initializeAnimationCtrl(TickerProvider x);
 
   TickerFuture setAnimationDirection({bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
 
-  initAnimation(TickerProvider vsync, {int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
+  initAnimation(TickerProvider vsync,{int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
 
   Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener});
 

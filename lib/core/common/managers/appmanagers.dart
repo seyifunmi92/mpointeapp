@@ -4,6 +4,7 @@ import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/operations.dart';
+import 'package:mpointe/core/helpers/bLogic/operations/animationlogic.dart';
 import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
 import 'package:mpointe/core/helpers/bLogic/controllers/animationcontroller.dart';
 
@@ -33,6 +34,7 @@ class Logic {
 }
 
 class AnimationManager {
-  static IAnimationCtrl animation = get<IAnimationCtrl>();
-  static AnimationCtrl controller = get<AnimationCtrl>();
+  static IAnimationCtrl animate = get<IAnimationCtrl>();
+  static AnimationCtrl control = get<AnimationCtrl>();
+  static AnimationLogic logic = get<AnimationLogic>();
 }
