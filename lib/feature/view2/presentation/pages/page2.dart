@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
@@ -13,6 +11,7 @@ import 'package:mpointe/feature/view2/presentation/widgets/widgets/cosyareasdial
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/orangecontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/filtercontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/locations_avatar.dart';
+// ignore_for_file: prefer_const_constructors
 
 class Page2 extends StatefulWidget {
   const Page2({super.key});
