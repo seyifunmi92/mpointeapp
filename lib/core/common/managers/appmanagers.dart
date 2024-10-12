@@ -4,6 +4,7 @@ import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/operations.dart';
+import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
 import 'package:mpointe/core/helpers/bLogic/controllers/animationcontroller.dart';
 
 ///app handler
@@ -27,11 +28,11 @@ class ShowModals {
 
 ///business logic handler
 class Logic {
-  static LogicOperations logicoperations = get<LogicOperations>();
+  static ILogicOperations logicoperations = get<ILogicOperations>();
   static Operations call = get<Operations>();
 }
 
 class AnimationManager {
-  static Animations animation = get<Animations>();
+  static IAnimationCtrl animation = get<IAnimationCtrl>();
   static AnimationCtrl controller = get<AnimationCtrl>();
 }

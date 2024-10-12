@@ -4,6 +4,7 @@ import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/operations.dart';
+import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
 import 'package:mpointe/core/helpers/bLogic/controllers/animationcontroller.dart';
 
 Future<void> initializeServiceLocator() async => get
@@ -17,9 +18,9 @@ Future<void> initializeServiceLocator() async => get
   ..registerSingleton<Modal>(Modal.instance)
 
   ///logic
-  ..registerSingleton<LogicOperations>(Operations.instance)
+  ..registerSingleton<ILogicOperations>(Operations.instance)
   ..registerSingleton<Operations>(Operations.instance)
 
   //.animations
-  ..registerFactory<Animations>(() => AnimationCtrl())
+  ..registerFactory<IAnimationCtrl>(() => AnimationCtrl())
   ..registerFactory<AnimationCtrl>(() => AnimationCtrl());

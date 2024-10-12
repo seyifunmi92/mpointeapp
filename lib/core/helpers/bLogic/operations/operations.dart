@@ -1,15 +1,15 @@
 import 'dart:async';
 
-abstract class LogicOperations {
+abstract class ILogicOperations {
   Future<dynamic> callFutureMethod(int sec, FutureOr<dynamic> Function()? method);
 }
 
-class Operations implements LogicOperations {
+class Operations implements ILogicOperations {
   Operations._();
 
   static Operations instance = Operations._();
   @override
 
   ///call method in future
-  Future<dynamic> callFutureMethod(int sec, FutureOr<dynamic> Function()? method) => Future.delayed(Duration(seconds: sec),  method);
+  Future<dynamic> callFutureMethod(int sec, FutureOr<dynamic> Function()? method) => Future.delayed(Duration(seconds: sec), method);
 }

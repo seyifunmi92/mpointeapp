@@ -1,16 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
 
-abstract class Animations {
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? sec});
-
-  TickerFuture setAnimationDirection({bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
-
-  updateAnimationListener();
-
-  initAnimation(TickerProvider vsync, {int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
-}
-
-class AnimationCtrl implements Animations {
+class AnimationCtrl implements IAnimationCtrl {
   AnimationCtrl._internal();
   static final AnimationCtrl _animation = AnimationCtrl._internal();
   factory AnimationCtrl() => _animation;
@@ -22,6 +15,12 @@ class AnimationCtrl implements Animations {
   Curve? _curve;
 
   Curve? get curve => _curve;
+
+  double _counter = 0.0;
+
+  double get counter => _counter;
+
+  final Random _rnd = Random();
 
   ///initialize controller
   @override
@@ -55,27 +54,31 @@ class AnimationCtrl implements Animations {
     await updateAnimationListener();
   }
 
-
-
   ///Tunns animation
-  
+  @override
+  Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener}) async {
+    Animation<double> x = Tween(begin: 0.0, end: y).animate(controller!)
+      ..addListener(listener!)
+      ..addStatusListener((status) {});
 
+    setAnimationDirection();
 
-
-
+    return x;
+  }
 
   ///Offset animation
-  
-
-
-
+  @override
+  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller}) async => Tween<Offset>(begin: isCurved ? Offset(x, y) : Offset.zero, end: isCurved ? Offset.zero : Offset(x, y)).animate(isCurved ? CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? _curve!) : ReverseAnimation(controller ?? _icontroller));
 
   ///Fade animation
-  
-
-
-
-
+  @override
+  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve}) async => CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.bounceInOut);
 
   ///count offset animation
+  @override
+  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve}) async => await getCounterValue(value, controller: controller).then((x) => setAnimationDirection());
+
+  ///get counter value
+  @override
+  Future<Animation<double>> getCounterValue(value, {AnimationController? controller}) async => Tween<double>(begin: 0, end: (_counter += _rnd.nextInt(value) + 2)).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.fastOutSlowIn));
 }
