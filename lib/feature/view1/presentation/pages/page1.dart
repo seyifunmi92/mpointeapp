@@ -39,7 +39,7 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
           AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
         }));
     AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
-    Logic.logicoperations.callFutureMethod(6, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 520.h))));
+    Logic.logicoperations.callFutureMethod(6, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 505.h))));
     super.initState();
   }
 

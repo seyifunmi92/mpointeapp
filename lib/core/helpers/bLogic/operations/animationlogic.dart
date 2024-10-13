@@ -31,9 +31,9 @@ class AnimationLogic {
 
   Animation<Offset>? get perfectPlaceText => _perfectPlaceText;
 
-  Animation<Offset>? _bNavOffset;
+  Animation<double>? _bNavOffset;
 
-  Animation<Offset>? get bNavOffset => _bNavOffset;
+  Animation<double>? get bNavOffset => _bNavOffset;
 
   bool _showText = false;
 
@@ -115,8 +115,6 @@ class AnimationLogic {
   updateOffsetAnimations(void Function()? callback) async {
     _hitext = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 3.0, beginInterval: 0.27, endInterval: 0.38, callback: callback);
     _perfectPlaceText = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 3.0, beginInterval: 0.38, endInterval: 0.48, callback: callback);
-
-    /// _bNavOffset = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 7.0, beginInterval: 0.7, endInterval: 1.0, callback: callback);
   }
 
   updateCounterAnimation(void Function()? callback) async {
@@ -127,8 +125,8 @@ class AnimationLogic {
   ///animation Logic for modal pop up
   initializeSwipeTurns(void Function()? callback) async {
     _swipe1 = await AnimationManager.animate.getTurnsValue(y: _mq.size.width, listener: callback, begininterval: 0.01, endinterval: 0.15, controller: AnimationManager.control.icontroller2);
-    _swipe2 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.37, endinterval: 0.42, controller: AnimationManager.control.icontroller2);
-    _swipe3 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.63, endinterval: 0.68, controller: AnimationManager.control.icontroller2);
+    _swipe2 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.36, endinterval: 0.42, controller: AnimationManager.control.icontroller2);
+    _swipe3 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.62, endinterval: 0.68, controller: AnimationManager.control.icontroller2);
   }
 
   initializeFadeAnimation(void Function()? callback) async {
@@ -138,7 +136,11 @@ class AnimationLogic {
     _circle2fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.52, endinterval: 0.62, controller: AnimationManager.control.icontroller2);
     _sedoveFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.68, endinterval: 0.78, controller: AnimationManager.control.icontroller2);
     _circle3fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.78, endinterval: 0.88, controller: AnimationManager.control.icontroller2);
+        _bNavOffset = await AnimationManager.animate.getFadeValue(beginInterval: 0.88, endinterval: 1.0, controller: AnimationManager.control.icontroller2);
+
   }
+
+
 
   showHiText(bool x) {
     _showText = x;
