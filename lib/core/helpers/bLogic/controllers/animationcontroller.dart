@@ -28,7 +28,7 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///initialize controller
   @override
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 4));
+  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 5));
 
   ///set direction
   @override
@@ -51,8 +51,7 @@ class AnimationCtrl implements IAnimationCtrl {
   ///initialize animation
   @override
   initAnimation(
-    TickerProvider vsync,
-   {
+    TickerProvider vsync, {
     int? sec,
     bool isforward = true,
     bool isReverse = false,
@@ -68,8 +67,8 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///Tunns animation
   @override
-  Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener}) async {
-    Animation<double> x = Tween(begin: 0.0, end: y).animate(controller ?? _icontroller)
+  Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener, double? begininterval, double? endinterval, Curve? curve}) async {
+    Animation<double> x = Tween<double>(begin: 0.0, end: y).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(begininterval ?? 0.0, endinterval ?? 1.0, curve: curve ?? Curves.easeIn)))
       ..addListener(listener!)
       ..addStatusListener((status) {});
 
@@ -80,21 +79,60 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///Offset animation
   @override
-  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller}) async => Tween<Offset>(begin: isCurved ? Offset(x, y) : Offset.zero, end: isCurved ? Offset.zero : Offset(x, y)).animate(isCurved ? CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? _curve!) : ReverseAnimation(controller ?? _icontroller));
+  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback}) async {
+    x = Tween<Offset>(begin: isCurved ? Offset(x, y) : Offset.zero, end: isCurved ? Offset.zero : Offset(x, y)).animate(isCurved
+        ? CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(beginInterval ?? 0.0, endInterval ?? 1.0, curve: curve ?? Curves.easeIn))
+        : ReverseAnimation(
+            controller ?? _icontroller,
+          ))
+      ..addListener(callback!)
+      ..addStatusListener((status) {});
+
+    return x;
+  }
 
   ///Fade animation
   @override
-  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve}) async {
-    return CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.fastOutSlowIn);
+  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve, double? beginInterval, double? endinterval}) async {
+    return CurvedAnimation(
+        parent: controller ?? _icontroller,
+        curve: Interval(
+          beginInterval ?? 0.0,
+          endinterval ?? 1.0,
+          curve: curve ?? Curves.fastOutSlowIn,
+        ));
   }
 
   ///count offset animation
   @override
-  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve}) async => await getCounterValue(value, controller: controller).then((x) => setAnimationDirection());
+  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve, double? beginInterval, double? endInterval, void Function()? callback}) async => await getCounterValue(value, controller: _icontroller, beginInterval: beginInterval, endInterval: endInterval, callback: callback).then((x) => setAnimationDirection());
 
   ///get counter value
   @override
-  Future<Animation<double>> getCounterValue(value, {AnimationController? controller}) async => Tween<double>(begin: 0, end: (_counter += _rnd.nextInt(value) + 2)).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: curve ?? Curves.fastOutSlowIn));
+  Future<Animation<double>> getCounterValue(value, {AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback}) async {
+    Animation<double> x = Tween<double>(begin: 0, end: (_counter += _rnd.nextInt(value) + 2)).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(beginInterval ?? 0.0, endInterval ?? 1.0, curve: curve ?? Curves.fastOutSlowIn)))
+      ..addListener(() {})
+      ..addStatusListener((status) {});
+      _icontroller.forward();
+
+  
+
+    return x;
+  }
+
+  //   ///implement animated counter
+  // Future<Animation<double>> implementAnimatedCounter(void Function()? fn, maxvalue) async {
+  //   double value = 0.0;
+  //   Random rnd = Random();
+  //   value += rnd.nextInt(maxvalue) + 2;
+  //   Animation<double> t = Tween<double>(
+  //     begin: 0,
+  //     end: value,
+  //   ).animate(CurvedAnimation(parent: _icontroller, curve: Curves.fastOutSlowIn));
+  //   _icontroller.forward();
+
+  //   return t;
+  // }
 
   updateControllerDuration(int s) {
     _icontrollerDuration = Duration(seconds: s);

@@ -5,17 +5,17 @@ abstract class IAnimationCtrl {
 
   TickerFuture setAnimationDirection({bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
 
-  initAnimation(TickerProvider vsync,{int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
+  initAnimation(TickerProvider vsync, {int? sec, bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false});
 
-  Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener});
+  Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener, double? begininterval, double? endinterval, Curve? curve});
 
-  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller});
+  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback});
 
-  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve});
+  Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve, double? beginInterval, double? endinterval});
 
-  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve});
+  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve, double? beginInterval, double? endInterval, void Function()? callback});
 
-  Future<Animation<double>> getCounterValue(value, {AnimationController? controller});
+  Future<Animation<double>> getCounterValue(value, {AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback});
 
   updateAnimationListener();
 }

@@ -8,6 +8,7 @@ import 'package:mpointe/core/extensions/contextextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
 import 'package:mpointe/core/common/widgets/animatedwidgets/fadeanimation.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgets/appbar.dart';
+import 'package:mpointe/core/common/widgets/animatedwidgets/slideanimation.dart';
 import 'package:mpointe/core/common/widgets/reuseables/base/scaffoldgradient.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgets/bottom_nav.dart';
 import 'package:mpointe/core/common/widgets/reuseables/image_handler/imagebulder.dart';
@@ -36,6 +37,13 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
 
     AnimationManager.logic.updateFadeAnimation().then((x) => setState(() {}));
 
+    AnimationManager.logic.updateOffsetAnimations(() => setState(() {
+          AnimationManager.logic.showHiText(AnimationManager.logic.hitext!.value.dy.toInt() == 0.0 ? true : false);
+          AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
+        }));
+
+    AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
+
     super.initState();
   }
 
@@ -46,8 +54,13 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
       children: [
         ///first widget in stack
         AppBody(
-          bottomNav: BottomNav(
-            args: BottomNavArgs(height: 520.h),
+          bottomNav: SlideAnimationWidget(
+            args: SlideAnimationArgs(
+              offset: val.bNavOffset,
+              child: BottomNav(
+                args: BottomNavArgs(height: 500.h),
+              ),
+            ),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,27 +76,41 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                 icon: Icons.location_on,
                 fontSize: val.stPtrsbugText!.value,
                 iconSize: val.stPtrsbugIcon!.value,
-                widget: val.avatarFade == null ? 0.toSizeH : FadeAnimationWidget(args: FadeAnimationArgs(fade: val.avatarFade!, child: ImageBuilder(radius: 25, path: ImageHandler.img.headshot).getImage)),
+                widget: FadeAnimationWidget(args: FadeAnimationArgs(fade: val.avatarFade!, child: ImageBuilder(radius: 25, path: ImageHandler.img.headshot).getImage)),
               )),
 
               50.toSizeH,
 
               ///bodyText
-              IText(
-                value: "Hi, Oluwaseyi",
-                fontSize: 23.fsize,
-                fontColor: ColorHelper.whitecontainer3,
-              ),
+              val.showText == false
+                  ? 0.toSizeH
+                  : SlideAnimationWidget(
+                      args: SlideAnimationArgs(
+                        offset: val.hitext,
+                        child: IText(
+                          value: "Hi, Oluwaseyi",
+                          fontSize: 23.fsize,
+                          fontColor: ColorHelper.whitecontainer3,
+                        ),
+                      ),
+                    ),
 
               5.toSizeH,
 
-              IText(
-                value: "let's select your\nperfect place",
-                fontSize: 37.fsize,
-                fontColor: ColorHelper.black,
-                fontFamily: IFonts.nunito,
-                align: TextAlign.start,
-              ),
+              val.showText2 == false
+                  ? 0.toSizeH
+                  : SlideAnimationWidget(
+                      args: SlideAnimationArgs(
+                        offset: val.perfectPlaceText,
+                        child: IText(
+                          value: "let's select your\nperfect place",
+                          fontSize: 37.fsize,
+                          fontColor: ColorHelper.black,
+                          fontFamily: IFonts.nunito,
+                          align: TextAlign.start,
+                        ),
+                      ),
+                    ),
 
               20.toSizeH,
 
@@ -91,10 +118,11 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ///BUY OFFERS
-                  BuyandRentContainer(args: OrangeCircleArgs(texttop: "BUY", textmiddle: "1 034", textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: ColorHelper.white)).toCircle(radius: 100, color: Colors.orange),
+                  FadeAnimationWidget(
+                    args: FadeAnimationArgs(fade: val.buyContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "BUY", textmiddle: val.buyCount?.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: ColorHelper.white)).toCircle(radius: 100, color: Colors.orange)),
+                  ),
 
-                  ///RENT OFFERS
-                  BuyandRentContainer(args: OrangeCircleArgs(texttop: "RENT", textmiddle: "2 212", textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: Colors.brown.withOpacity(.5))).toContainer(height: 170.h, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))
+                  FadeAnimationWidget(args: FadeAnimationArgs(fade: val.rentContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "RENT", textmiddle: val.rentCount!.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: Colors.brown.withOpacity(.5))).toContainer(height: 170.h, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))))
                 ],
               )
             ],
