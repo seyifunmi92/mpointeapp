@@ -16,6 +16,10 @@ class AnimationCtrl implements IAnimationCtrl {
 
   get icontroller2 => _icontroller2;
 
+  late AnimationController _icontroller3;
+
+  get icontroller3 => _icontroller3;
+
   Curve? _curve;
 
   Curve? get curve => _curve;
@@ -35,6 +39,8 @@ class AnimationCtrl implements IAnimationCtrl {
   Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
 
   Future<AnimationController> initializeAnimationCtrl2(TickerProvider x, {int? s}) async => _icontroller2 = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
+
+  Future<AnimationController> initializeAnimationCtrl3(TickerProvider x, {int? s}) async => _icontroller3 = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
 
   ///set direction
   @override
@@ -62,7 +68,7 @@ class AnimationCtrl implements IAnimationCtrl {
     bool isRepeated = false,
   }) async {
     await initializeAnimationCtrl(vsync, s: sec);
-    await setAnimationDirection();
+    _icontroller2.forward();
     await updateAnimationListener();
   }
 
@@ -79,16 +85,29 @@ class AnimationCtrl implements IAnimationCtrl {
     _icontroller2.addListener(() => _icontroller2.status == AnimationStatus.completed ? _icontroller2.stop() : _icontroller2.forward());
   }
 
+  initAnimation3(
+    TickerProvider vsync, {
+    int? sec,
+    bool isforward = true,
+    bool isReverse = false,
+    bool isfling = false,
+    bool isRepeated = false,
+  }) async {
+    await initializeAnimationCtrl3(vsync, s: sec);
+    _icontroller3.forward();
+    _icontroller3.addListener(() => _icontroller3.status == AnimationStatus.completed ? _icontroller3.stop() : _icontroller3.forward());
+  }
+
   ///Tunns animation
   @override
   Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener, double? begininterval, double? endinterval, Curve? curve}) async {
-    Animation<double> x = Tween<double>(begin: 0.0, end: y).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(begininterval ?? 0.0, endinterval ?? 1.0, curve: curve ?? Curves.easeIn)))
+    Animation<double> t = Tween<double>(begin: x ?? 0.0, end: y).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(begininterval ?? 0.0, endinterval ?? 1.0, curve: curve ?? Curves.easeIn)))
       ..addListener(listener!)
       ..addStatusListener((status) {});
 
-    setAnimationDirection();
+    //setAnimationDirection();
 
-    return x;
+    return t;
   }
 
   ///Offset animation
@@ -131,6 +150,12 @@ class AnimationCtrl implements IAnimationCtrl {
 
     return x;
   }
+
+  disponseAnimationCtrl() => _icontroller.dispose();
+
+  disponseAnimationCtrl2() => _icontroller2.dispose();
+
+  disposeAnimationCtrl3() => _icontroller3.dispose();
 
   updateControllerDuration(int s) {
     _icontrollerDuration = Duration(seconds: s);

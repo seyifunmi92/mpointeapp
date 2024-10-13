@@ -37,6 +37,12 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    AnimationManager.control.disponseAnimationCtrl2();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     AnimationLogic val = AnimationManager.logic;
     return Stack(

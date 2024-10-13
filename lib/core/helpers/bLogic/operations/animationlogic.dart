@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
+import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/orange_circle_args.dart';
 // ignore_for_file: prefer_final_fields
 
 class AnimationLogic {
@@ -99,6 +100,14 @@ class AnimationLogic {
 
   Animation<double>? get circle3fade => _circle3fade;
 
+  Animation<double>? _fadeTextField;
+
+  Animation<double>? get fadeTextField => _fadeTextField;
+
+  Animation<double>? _orangeCardTurns;
+
+  Animation<double>? get orangeCircleTurns => _orangeCardTurns;
+
   ///update all turn animation
   updateTurnsAnimations(void Function()? callback) async {
     _stPtrsbugCard = await AnimationManager.animate.getTurnsValue(y: 130.w, listener: callback, begininterval: 0.0, endinterval: 0.05);
@@ -137,6 +146,19 @@ class AnimationLogic {
     _sedoveFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.68, endinterval: 0.78, controller: AnimationManager.control.icontroller2);
     _circle3fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.78, endinterval: 0.88, controller: AnimationManager.control.icontroller2);
     _bNavOffset = await AnimationManager.animate.getFadeValue(beginInterval: 0.88, endinterval: 1.0, controller: AnimationManager.control.icontroller2);
+  }
+
+  ///animation logic for map screen
+  updateFadeMapScreen(void Function()? callback) async {
+    _fadeTextField = await AnimationManager.animate.getFadeValue(beginInterval: 0.35, endinterval: 0.4, controller: AnimationManager.control.icontroller3);
+  }
+
+  updateTurnsValuesMapScreen(void Function()? callback) async {
+    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(y: 50.w, listener: callback, begininterval: 0.1, endinterval: 0.3, controller: AnimationManager.control.icontroller3);
+  }
+
+  updateTurnsValuesMap2(void Function()? callback) async {
+    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(x: 50.w, y: 30.w, listener: callback, begininterval: 0.1, endinterval: 0.2, controller: AnimationManager.control.icontroller3);
   }
 
   showHiText(bool x) {

@@ -4,6 +4,8 @@ import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
+import 'package:mpointe/core/helpers/bLogic/operations/animationlogic.dart';
+import 'package:mpointe/core/common/widgets/animatedwidgets/fadeanimation.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/variants.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/mapwidget.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/textfield.dart';
@@ -21,117 +23,148 @@ class Page2 extends StatefulWidget {
   State<Page2> createState() => _Page2State();
 }
 
-class _Page2State extends State<Page2> {
+class _Page2State extends State<Page2> with TickerProviderStateMixin {
   @override
   void initState() {
-  //  Logic.logicoperations.callFutureMethod(1, () => CosyAreaDialog().toDialog(context));
+    AnimationManager.control.initAnimation3(this);
+
+    AnimationManager.logic.updateTurnsValuesMapScreen(() => setState(() {}));
+
+    AnimationManager.logic.updateFadeMapScreen(() => setState(() {}));
+
+    Logic.logicoperations.callFutureMethod(3, () {
+      AnimationManager.control.disposeAnimationCtrl3();
+
+      AnimationManager.control.initAnimation3(this);
+
+      AnimationManager.logic.updateTurnsValuesMap2(() => setState(() {}));
+    });
+
+    Logic.logicoperations.callFutureMethod(8, () => CosyAreaDialog().toDialog(context));
     super.initState();
   }
 
   @override
-  Widget build(BuildContext context) => Stack(
-        children: [
-          ///return map
-          const MapWidget(),
+  void dispose() {
+    // AnimationManager.control.disposeAnimationCtrl3();
+    super.dispose();
+  }
 
-          ///
-          Scaffold(
-            backgroundColor: Colors.black87.withOpacity(.5),
-            body: Pad(
-              child: Column(
-                children: [
-                  60.toSizeH,
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ITextField(),
-                      FilterContainer(),
-                    ],
-                  ),
-                  30.toSizeH,
+  @override
+  Widget build(BuildContext context) {
+    AnimationLogic val = AnimationManager.logic;
 
-                  ///
-                  OrangeContainer(
-                    sidewidth: 100,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-                  30.toSizeH,
+    return Stack(
+      children: [
+        ///return map
+        const MapWidget(),
 
-                  ///
-                  OrangeContainer(
-                    sidewidth: 120,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-                  30.toSizeH,
-
-                  ///
-                  OrangeContainer(
-                    sidewidth: 240,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-                  10.toSizeH,
-
-                  ///
-                  OrangeContainer(
-                    sidewidth: 320,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-
-                  10.toSizeH,
-
-                  ///
-                  OrangeContainer(
-                    sidewidth: 100,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-                  30.toSizeH,
-
-                  ///
-                  OrangeContainer(
-                    sidewidth: 170,
-                    height: 35.h,
-                    width: 30.w,
-                    iconsSize: 16.h,
-                  ),
-
-                  130.toSizeH,
-
-                  ///
-                  LocationAvatar(
-                    icon: Icons.accessible,
-                  ).toRow(),
-
-                  ///
-
-                  ///
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      LocationAvatar(),
-                      VariantsContainer(),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            floatingActionButton: Column(
+        ///
+        Scaffold(
+          backgroundColor: Colors.black87.withOpacity(.5),
+          body: Pad(
+            child: Column(
               children: [
-                SizedBox(height: 730.h),
-                PositionBottomNav(),
+                60.toSizeH,
+                FadeAnimationWidget(
+                  args: FadeAnimationArgs(
+                    fade: val.fadeTextField!,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        FadeAnimationWidget(
+                          args: FadeAnimationArgs(fade: val.fadeTextField!, child: ITextField()),
+                        ),
+                        FilterContainer(),
+                      ],
+                    ),
+                  ),
+                ),
+                30.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 100,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+                30.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 120,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+                30.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 240,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+                10.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 320,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+
+                10.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 100,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+                30.toSizeH,
+
+                ///
+                OrangeContainer(
+                  sidewidth: 170,
+                  height: 35.h,
+                  width: val.orangeCircleTurns!.value,
+                  iconsSize: 16.h,
+                ),
+
+                130.toSizeH,
+
+                ///
+                LocationAvatar(
+                  icon: Icons.accessible,
+                ).toRow(),
+
+                ///
+
+                ///
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    LocationAvatar(),
+                    VariantsContainer(),
+                  ],
+                )
               ],
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-          )
-        ],
-      );
+          ),
+          floatingActionButton: Column(
+            children: [
+              SizedBox(height: 730.h),
+              PositionBottomNav(),
+            ],
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        )
+      ],
+    );
+  }
 }

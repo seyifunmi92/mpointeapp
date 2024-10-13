@@ -32,7 +32,7 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
     AnimationManager.animate.initAnimation(
       this,
     );
-    AnimationManager.logic.updateTurnsAnimations(() => setState(() {}));
+  AnimationManager.logic.updateTurnsAnimations(() => setState(() {}));
     AnimationManager.logic.updateFadeAnimation().then((x) => setState(() {}));
     AnimationManager.logic.updateOffsetAnimations(() => setState(() {
           AnimationManager.logic.showHiText(AnimationManager.logic.hitext!.value.dy.toInt() == 0.0 ? true : false);
@@ -41,6 +41,12 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
     AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
     Logic.logicoperations.callFutureMethod(6, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 505.h))));
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    AnimationManager.control.disponseAnimationCtrl();
+    super.dispose();
   }
 
   @override
