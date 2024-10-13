@@ -9,7 +9,7 @@ abstract class IAnimationCtrl {
 
   Future<Animation<double>> getTurnsValue({double? x, required double y, AnimationController? controller, void Function()? listener, double? begininterval, double? endinterval, Curve? curve});
 
-  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback});
+  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback, Curve? curve});
 
   Future<Animation<double>> getFadeValue({AnimationController? controller, Curve? curve, double? beginInterval, double? endinterval});
 

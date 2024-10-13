@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/feature/view1/presentation/pages/page1.dart';
+import 'package:mpointe/feature/view2/presentation/pages/page2.dart';
 
 class MApp {
   MApp._internal();

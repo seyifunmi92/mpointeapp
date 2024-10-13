@@ -112,7 +112,7 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///Offset animation
   @override
-  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback}) async {
+  Future<Animation<Offset>> getOffsetValue({x, y, bool isCurved = true, AnimationController? controller, double? beginInterval, double? endInterval, void Function()? callback, Curve? curve}) async {
     x = Tween<Offset>(begin: isCurved ? Offset(x, y) : Offset.zero, end: isCurved ? Offset.zero : Offset(x, y)).animate(isCurved
         ? CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(beginInterval ?? 0.0, endInterval ?? 1.0, curve: curve ?? Curves.easeIn))
         : ReverseAnimation(

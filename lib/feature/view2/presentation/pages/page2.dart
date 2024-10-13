@@ -33,11 +33,11 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
 
     AnimationManager.logic.updateFadeMapScreen(() => setState(() {}));
 
-    Logic.logicoperations.callFutureMethod(4, () => CosyAreaDialog().toDialog(context));
+    Logic.logicoperations.callFutureMethod(5, () => CosyAreaDialog().toDialog(context));
 
-    Logic.logicoperations.callFutureMethod(6, () => context.pop);
+    Logic.logicoperations.callFutureMethod(7, () => context.pop);
 
-    Logic.logicoperations.callFutureMethod(7, () {
+    Logic.logicoperations.callFutureMethod(8, () {
       AnimationManager.control.disposeAnimationCtrl3();
 
       AnimationManager.control.initAnimation3(this);
@@ -143,9 +143,16 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                 130.toSizeH,
 
                 ///
-                LocationAvatar(
-                  icon: Icons.accessible,
-                ).toRow(),
+                FadeAnimationWidget(
+                  args: FadeAnimationArgs(
+                    fade: val.fademapcircle1!,
+                    child: LocationAvatar(
+                      icon: Icons.accessible,
+                    ).toRow(),
+                  ),
+                ),
+
+                5.toSizeH,
 
                 ///
 
@@ -153,8 +160,12 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LocationAvatar(),
-                    VariantsContainer(),
+                    FadeAnimationWidget(
+                      args: FadeAnimationArgs(fade: val.fademapcircle2!, child: LocationAvatar()),
+                    ),
+                    FadeAnimationWidget(
+                      args: FadeAnimationArgs(fade: val.fadevariantcontainer!, child: VariantsContainer()),
+                    ),
                   ],
                 )
               ],

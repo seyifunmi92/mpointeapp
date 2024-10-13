@@ -107,6 +107,22 @@ class AnimationLogic {
 
   Animation<double>? get circle1fade => _circle1fade;
 
+  Animation<double>? _circle1Turn;
+
+  Animation<double>? get circle1Turn => _circle1Turn;
+
+  Animation<double>? _icon1Turn;
+
+  Animation<double>? get icon1Turn => _icon1Turn;
+
+  Animation<double>? _circle2Turn;
+
+  Animation<double>? get circle2Turn => _circle2Turn;
+
+  Animation<double>? _icon2Turn;
+
+  Animation<double>? get icon2Turn => _icon2Turn;
+
   Animation<double>? _swipe2;
 
   Animation<double>? get swipe2 => _swipe2;
@@ -143,9 +159,21 @@ class AnimationLogic {
 
   Animation<double>? get avatarTurns => _avatarTurns;
 
+  Animation<double>? _fademapcircle1;
+
+  Animation<double>? get fademapcircle1 => _fademapcircle1;
+
+  Animation<double>? _fademapcircle2;
+
+  Animation<double>? get fademapcircle2 => _fademapcircle2;
+
+  Animation<double>? _fadevariantcontainer;
+
+  Animation<double>? get fadevariantcontainer => _fadevariantcontainer;
+
   ///update all turn animation
   updateTurnsAnimations(void Function()? callback) async {
-    _stPtrsbugCard = await AnimationManager.animate.getTurnsValue(y: 130.w, listener: callback, begininterval: 0.0, endinterval: 0.08);
+    _stPtrsbugCard = await AnimationManager.animate.getTurnsValue(y: 130.w, listener: callback, begininterval: 0.0, endinterval: 0.08, curve: Curves.easeInOutCirc);
     _buyContainerTurns = await AnimationManager.animate.getTurnsValue(y: 100, listener: callback, begininterval: 0.28, endinterval: 0.5);
     _rentContainerTurns = await AnimationManager.animate.getTurnsValue(y: 170.h, listener: callback, begininterval: 0.28, endinterval: 0.5);
     _buyContainerTurnsTextMiddle = await AnimationManager.animate.getTurnsValue(y: 45.fsize, listener: callback, begininterval: 0.3, endinterval: 0.5);
@@ -169,7 +197,7 @@ class AnimationLogic {
   }
 
   updateOffsetAnimations(void Function()? callback) async {
-    _hitext = await AnimationManager.animate.getOffsetValue(x: 0.0, y: -3.0, beginInterval: 0.24, endInterval: 0.3, callback: callback);
+    _hitext = await AnimationManager.animate.getOffsetValue(x: 0.0, y: -3.0, beginInterval: 0.24, endInterval: 0.3, callback: callback, curve: Curves.easeInOutCirc);
     // _perfectPlaceText = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 3.0, beginInterval: 0.28, endInterval: 0.42, callback: callback);
   }
 
@@ -180,36 +208,43 @@ class AnimationLogic {
 
   ///animation Logic for modal pop up
   initializeOffsetModal(void Function()? callback) async {
-    _bNavOffset2 = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 1.0, beginInterval: 0.2, endInterval: 0.5, callback: callback, controller: AnimationManager.control.icontroller2);
+    _bNavOffset2 = await AnimationManager.animate.getOffsetValue(x: 0.0, y: 1.0, beginInterval: 0.24, endInterval: 0.52, callback: callback, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
   }
 
   initializeSwipeTurns(void Function()? callback) async {
-    _swipe1 = await AnimationManager.animate.getTurnsValue(y: _mq.size.width, listener: callback, begininterval: 0.01, endinterval: 0.2, controller: AnimationManager.control.icontroller2);
-    _swipe2 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.01, endinterval: 0.2, controller: AnimationManager.control.icontroller2);
-    _swipe3 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.01, endinterval: 0.2, controller: AnimationManager.control.icontroller2);
+    _swipe1 = await AnimationManager.animate.getTurnsValue(y: _mq.size.width, listener: callback, begininterval: 0.01, endinterval: 0.26, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _swipe2 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.05, endinterval: 0.27, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _swipe3 = await AnimationManager.animate.getTurnsValue(y: 145.w, listener: callback, begininterval: 0.07, endinterval: 0.27, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _circle1Turn = await AnimationManager.animate.getTurnsValue(y: 26, listener: callback, begininterval: 0.01, endinterval: 0.28, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _icon1Turn = await AnimationManager.animate.getTurnsValue(y: 15.h, listener: callback, begininterval: 0.01, endinterval: 0.28, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _circle2Turn = await AnimationManager.animate.getTurnsValue(y: 20, listener: callback, begininterval: 0.01, endinterval: 0.28, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
+    _icon2Turn = await AnimationManager.animate.getTurnsValue(y: 12.h, listener: callback, begininterval: 0.01, endinterval: 0.28, controller: AnimationManager.control.icontroller2, curve: Curves.easeInOutCirc);
   }
 
   initializeFadeAnimation(void Function()? callback) async {
-    _gladovaFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
-    _circle1fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
-    _trefolevaFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.2, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
-    _circle2fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
-    _sedoveFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
-    _circle3fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.4, controller: AnimationManager.control.icontroller2);
+    _gladovaFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
+    _circle1fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
+    _trefolevaFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.2, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
+    _circle2fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
+    _sedoveFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
+    _circle3fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.20, endinterval: 0.47, controller: AnimationManager.control.icontroller2);
     _bNavOffset = await AnimationManager.animate.getFadeValue(beginInterval: 0.5, endinterval: 0.7, controller: AnimationManager.control.icontroller2);
   }
 
   ///animation logic for map screen
   updateFadeMapScreen(void Function()? callback) async {
-    _fadeTextField = await AnimationManager.animate.getFadeValue(beginInterval: 0.0, endinterval: 0.2, controller: AnimationManager.control.icontroller3);
+    _fadeTextField = await AnimationManager.animate.getFadeValue(beginInterval: 0.0, endinterval: 0.1, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fademapcircle1 = await AnimationManager.animate.getFadeValue(beginInterval: 0.1, endinterval: 0.2, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fademapcircle2 = await AnimationManager.animate.getFadeValue(beginInterval: 0.2, endinterval: 0.3, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fadevariantcontainer = await AnimationManager.animate.getFadeValue(beginInterval: 0.3, endinterval: 0.4, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
   }
 
   updateTurnsValuesMapScreen(void Function()? callback) async {
-    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(y: 50.w, listener: callback, begininterval: 0.2, endinterval: 0.3, controller: AnimationManager.control.icontroller3);
+    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(y: 50.w, listener: callback, begininterval: 0.4, endinterval: 0.5, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
   }
 
   updateTurnsValuesMap2(void Function()? callback) async {
-    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(x: 50.w, y: 30.w, listener: callback, begininterval: 0.1, endinterval: 0.2, controller: AnimationManager.control.icontroller3);
+    _orangeCardTurns = await AnimationManager.animate.getTurnsValue(x: 50.w, y: 30.w, listener: callback, begininterval: 0.0, endinterval: 0.15, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
   }
 
   showHiText(bool x) {
