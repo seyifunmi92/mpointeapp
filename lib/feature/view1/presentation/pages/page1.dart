@@ -32,14 +32,14 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
     AnimationManager.animate.initAnimation(
       this,
     );
-  AnimationManager.logic.updateTurnsAnimations(() => setState(() {}));
+    AnimationManager.logic.updateTurnsAnimations(() => setState(() {}));
     AnimationManager.logic.updateFadeAnimation().then((x) => setState(() {}));
     AnimationManager.logic.updateOffsetAnimations(() => setState(() {
           AnimationManager.logic.showHiText(AnimationManager.logic.hitext!.value.dy.toInt() == 0.0 ? true : false);
-          AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
+       //   AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
         }));
     AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
-    Logic.logicoperations.callFutureMethod(6, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 505.h))));
+    Logic.logicoperations.callFutureMethod(7, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 505.h))));
     super.initState();
   }
 
@@ -68,8 +68,9 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                 width: val.stPtrsbugCard!.value,
                 title: "Saint Petersburg",
                 icon: Icons.location_on,
-                fontSize: val.stPtrsbugText!.value,
-                iconSize: val.stPtrsbugIcon!.value,
+                fontSize: 10.fsize,
+                iconSize: 16.h,
+                fade: val.stPtrsbugTextFade,
                 widget: FadeAnimationWidget(args: FadeAnimationArgs(fade: val.avatarFade!, child: ImageBuilder(radius: 25, path: ImageHandler.img.headshot).getImage)),
               )),
 
@@ -91,20 +92,33 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
 
               5.toSizeH,
 
-              val.showText2 == false
-                  ? 0.toSizeH
-                  : SlideAnimationWidget(
-                      args: SlideAnimationArgs(
-                        offset: val.perfectPlaceText,
-                        child: IText(
-                          value: "let's select your\nperfect place",
-                          fontSize: 37.fsize,
-                          fontColor: ColorHelper.black,
-                          fontFamily: IFonts.nunito,
-                          align: TextAlign.start,
-                        ),
-                      ),
-                    ),
+              // val.showText2 == false
+              //     ? 0.toSizeH
+              //     : SlideAnimationWidget(
+              //         args: SlideAnimationArgs(
+              //           offset: val.perfectPlaceText,
+              //           child: IText(
+              //             value: "let's select your\nperfect place",
+              //             fontSize: 37.fsize,
+              //             fontColor: ColorHelper.black,
+              //             fontFamily: IFonts.nunito,
+              //             align: TextAlign.start,
+              //           ),
+              //         ),
+              //       ),
+
+              FadeAnimationWidget(
+                args: FadeAnimationArgs(
+                  fade: val.perfectplacefade!,
+                  child: IText(
+                    value: "let's select your\nperfect place",
+                    fontSize: 37.fsize,
+                    fontColor: ColorHelper.black,
+                    fontFamily: IFonts.nunito,
+                    align: TextAlign.start,
+                  ),
+                ),
+              ),
 
               20.toSizeH,
 
@@ -113,10 +127,10 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                 children: [
                   ///BUY OFFERS
                   FadeAnimationWidget(
-                    args: FadeAnimationArgs(fade: val.buyContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "BUY", textmiddle: val.buyCount?.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: ColorHelper.white)).toCircle(radius: 100, color: Colors.orange)),
+                    args: FadeAnimationArgs(fade: val.buyContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "BUY", textmiddle: val.buyCount?.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: val.buyContainerTurnsTextTop?.value, fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value, fontsizetextbelow: val.buyContainerTurnsTextBottom?.value, fontColor: ColorHelper.white)).toCircle(radius: val.buyContainerTurns!.value, color: Colors.orange)),
                   ),
 
-                  FadeAnimationWidget(args: FadeAnimationArgs(fade: val.rentContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "RENT", textmiddle: val.rentCount!.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: 12.fsize, fontsizetextmiddle: 45.fsize, fontsizetextbelow: 11.fsize, fontColor: Colors.brown.withOpacity(.5))).toContainer(height: 170.h, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))))
+                  FadeAnimationWidget(args: FadeAnimationArgs(fade: val.rentContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "RENT", textmiddle: val.rentCount!.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: val.buyContainerTurnsTextTop?.value, fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value, fontsizetextbelow: val.buyContainerTurnsTextBottom?.value, fontColor: Colors.brown.withOpacity(.5))).toContainer(height: val.rentContainerTurns?.value, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))))
                 ],
               )
             ],

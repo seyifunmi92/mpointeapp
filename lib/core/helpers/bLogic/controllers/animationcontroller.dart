@@ -36,7 +36,7 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///initialize controller
   @override
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
+  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 8));
 
   Future<AnimationController> initializeAnimationCtrl2(TickerProvider x, {int? s}) async => _icontroller2 = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
 

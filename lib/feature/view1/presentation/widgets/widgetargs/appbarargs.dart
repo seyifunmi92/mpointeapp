@@ -8,6 +8,7 @@ class AppBarArgs {
   double? iconSize;
   double? fontSize;
   Widget? widget;
+  Animation<double>? fade;
 
-  AppBarArgs({this.width, this.height, this.icon, this.title, this.iconSize, this.fontSize, this.widget});
+  AppBarArgs({this.width, this.height, this.icon, this.title, this.iconSize, this.fontSize, this.widget, this.fade});
 }

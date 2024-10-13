@@ -33,6 +33,8 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
 
     AnimationManager.logic.initializeFadeAnimation(() => setState(() {}));
 
+    AnimationManager.logic.initializeOffsetModal(() => setState(() {}));
+
     super.initState();
   }
 
@@ -125,9 +127,9 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
                     ]),
                   ))),
         ),
-        FadeAnimationWidget(
-          args: FadeAnimationArgs(
-            fade: val.bNavOffset!,
+        SlideAnimationWidget(
+          args: SlideAnimationArgs(
+            offset: val.bNavOffset2,
             child: Scaffold(
               backgroundColor: Colors.transparent,
               floatingActionButton: Column(

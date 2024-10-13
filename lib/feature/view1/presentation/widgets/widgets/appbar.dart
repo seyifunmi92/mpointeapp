@@ -3,6 +3,7 @@ import 'package:mpointe/core/constants/colors.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
+import 'package:mpointe/core/common/widgets/animatedwidgets/fadeanimation.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/appbarargs.dart';
 // ignore_for_file: must_be_immutable
 
@@ -23,22 +24,27 @@ class IAppBar extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             color: ColorHelper.white,
           ),
-          child: Pad(
-            width: 8.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  args.icon,
-                  size: args.iconSize,
-                  color: ColorHelper.whitecontainer3,
+          child: FadeAnimationWidget(
+            args: FadeAnimationArgs(
+              fade: args.fade!,
+              child: Pad(
+                width: 8.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      args.icon,
+                      size: args.iconSize,
+                      color: ColorHelper.whitecontainer3,
+                    ),
+                    IText(
+                      value: args.title!,
+                      fontSize: args.fontSize,
+                      fontColor: ColorHelper.whitecontainer3,
+                    ),
+                  ],
                 ),
-                IText(
-                  value: args.title!,
-                  fontSize: args.fontSize,
-                  fontColor: ColorHelper.whitecontainer3,
-                ),
-              ],
+              ),
             ),
           ),
         ),

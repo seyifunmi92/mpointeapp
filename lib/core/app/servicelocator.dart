@@ -10,6 +10,7 @@ import 'package:mpointe/core/helpers/bLogic/operations/animationlogic.dart';
 import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
 import 'package:mpointe/core/helpers/bLogic/controllers/animationcontroller.dart';
 
+
 Future<void> initializeServiceLocator() async => get
 
   ///entry point of app
