@@ -39,20 +39,16 @@ class SwipeOnImage extends StatelessWidget {
                     ),
                   ),
                 ),
-                FadeAnimationWidget(
-                  args: FadeAnimationArgs(
-                    fade: args.fadeCircle!,
-                    child: CircleAvatar(
-                      radius: args.radius,
-                      backgroundColor: ColorHelper.white.withOpacity(.7),
-                      child: Icon(
-                        Icons.arrow_forward_ios_outlined,
-                        color: ColorHelper.black.withOpacity(.5),
-                        size: 15.h,
-                      ),
-                    ),
+                CircleAvatar(
+                  radius: args.radius,
+                  backgroundColor: ColorHelper.white.withOpacity(.7),
+                  child: Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: ColorHelper.black.withOpacity(.5),
+                    size: args.iconSize,
                   ),
-                )
+                ),
+          
               ],
             ),
           ),

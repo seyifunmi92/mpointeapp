@@ -33,6 +33,8 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
 
     AnimationManager.logic.initializeFadeAnimation(() => setState(() {}));
 
+    AnimationManager.logic.initializeOffsetModal(() => setState(() {}));
+
     super.initState();
   }
 
@@ -64,16 +66,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
                             path: ImageHandler.img.kitchen,
                             fit: BoxFit.contain,
                           ).getImage.toRoundImage(radius: 30, clipheight: 244.h, clipwidth: context.maxWidth),
-                          SwipeOnImage(
-                              args: SwipeImageArgs(
-                            height: 180,
-                            radius: 26,
-                            width: val.swipe1?.value,
-                            label: 'Gladlova St, 25',
-                            fontSize: 15.fsize,
-                            fadeText: val.gladovaFade,
-                            fadeCircle: val.circle1fade,
-                          ))
+                          SwipeOnImage(args: SwipeImageArgs(height: 180, radius: val.circle1Turn?.value, width: val.swipe1?.value, label: 'Gladlova St, 25', fontSize: 15.fsize, fadeText: val.gladovaFade, fadeCircle: val.circle1fade, iconSize: val.icon1Turn?.value))
                         ],
                       ),
 
@@ -93,12 +86,13 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
                               SwipeOnImage(
                                   args: SwipeImageArgs(
                                 height: 165,
-                                radius: 20,
+                                radius: val.circle2Turn?.value,
                                 label: 'Trefoleva St., 43',
                                 fontSize: 10.fsize,
                                 width: val.swipe2?.value,
                                 fadeText: val.trefolevaFade,
                                 fadeCircle: val.circle2fade,
+                                iconSize: val.icon2Turn?.value,
                               ))
                             ],
                           ),
@@ -117,7 +111,7 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
                                   ),
 
                               ///
-                              SwipeOnImage(args: SwipeImageArgs(height: 165, radius: 20, label: 'Sedova St., 22', fontSize: 10.fsize, width: val.swipe3?.value, fadeText: val.sedovaFade, fadeCircle: val.circle3fade))
+                              SwipeOnImage(args: SwipeImageArgs(height: 165, radius: val.circle2Turn?.value, label: 'Sedova St., 22', fontSize: 10.fsize, width: val.swipe3?.value, fadeText: val.sedovaFade, fadeCircle: val.circle3fade, iconSize: val.icon2Turn?.value))
                             ],
                           ),
                         ],
@@ -125,14 +119,14 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
                     ]),
                   ))),
         ),
-        FadeAnimationWidget(
-          args: FadeAnimationArgs(
-            fade: val.bNavOffset!,
+        SlideAnimationWidget(
+          args: SlideAnimationArgs(
+            offset: val.bNavOffset2,
             child: Scaffold(
               backgroundColor: Colors.transparent,
               floatingActionButton: Column(
                 children: [
-                  SizedBox(height: 730.h),
+                  SizedBox(height: 720.h),
                   PositionBottomNav(),
                 ],
               ),

@@ -8,5 +8,5 @@ class MApp {
   static final MApp _materialApp = MApp._internal();
   factory MApp() => _materialApp;
 
-  Widget get maapp => MaterialApp(routes: RouteManager.logic.router, debugShowCheckedModeBanner: false, home:  const Page2());
+  Widget get maapp => MaterialApp(routes: RouteManager.logic.router, debugShowCheckedModeBanner: false, home: const Page1());
 }

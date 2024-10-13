@@ -3,6 +3,7 @@ import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
+import 'package:mpointe/core/extensions/navigationextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/animationlogic.dart';
 import 'package:mpointe/core/common/widgets/animatedwidgets/fadeanimation.dart';
@@ -32,7 +33,11 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
 
     AnimationManager.logic.updateFadeMapScreen(() => setState(() {}));
 
-    Logic.logicoperations.callFutureMethod(3, () {
+    Logic.logicoperations.callFutureMethod(5, () => CosyAreaDialog().toDialog(context));
+
+    Logic.logicoperations.callFutureMethod(7, () => context.pop);
+
+    Logic.logicoperations.callFutureMethod(8, () {
       AnimationManager.control.disposeAnimationCtrl3();
 
       AnimationManager.control.initAnimation3(this);
@@ -40,7 +45,6 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
       AnimationManager.logic.updateTurnsValuesMap2(() => setState(() {}));
     });
 
-    Logic.logicoperations.callFutureMethod(8, () => CosyAreaDialog().toDialog(context));
     super.initState();
   }
 
@@ -139,9 +143,16 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                 130.toSizeH,
 
                 ///
-                LocationAvatar(
-                  icon: Icons.accessible,
-                ).toRow(),
+                FadeAnimationWidget(
+                  args: FadeAnimationArgs(
+                    fade: val.fademapcircle1!,
+                    child: LocationAvatar(
+                      icon: Icons.accessible,
+                    ).toRow(),
+                  ),
+                ),
+
+                5.toSizeH,
 
                 ///
 
@@ -149,8 +160,12 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    LocationAvatar(),
-                    VariantsContainer(),
+                    FadeAnimationWidget(
+                      args: FadeAnimationArgs(fade: val.fademapcircle2!, child: LocationAvatar()),
+                    ),
+                    FadeAnimationWidget(
+                      args: FadeAnimationArgs(fade: val.fadevariantcontainer!, child: VariantsContainer()),
+                    ),
                   ],
                 )
               ],
