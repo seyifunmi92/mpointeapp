@@ -32,18 +32,14 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
     AnimationManager.animate.initAnimation(
       this,
     );
-
     AnimationManager.logic.updateTurnsAnimations(() => setState(() {}));
-
     AnimationManager.logic.updateFadeAnimation().then((x) => setState(() {}));
-
     AnimationManager.logic.updateOffsetAnimations(() => setState(() {
           AnimationManager.logic.showHiText(AnimationManager.logic.hitext!.value.dy.toInt() == 0.0 ? true : false);
           AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
         }));
-
     AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
-
+    Logic.logicoperations.callFutureMethod(6, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 520.h))));
     super.initState();
   }
 
@@ -54,14 +50,6 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
       children: [
         ///first widget in stack
         AppBody(
-          bottomNav: SlideAnimationWidget(
-            args: SlideAnimationArgs(
-              offset: val.bNavOffset,
-              child: BottomNav(
-                args: BottomNavArgs(height: 500.h),
-              ),
-            ),
-          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -128,6 +116,13 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
             ],
           ),
         ),
+
+        // Scaffold(
+        //   backgroundColor: Colors.transparent,
+        //   body: SlideAnimationWidget(
+        //     args: SlideAnimationArgs(offset: val.bNavOffset, child: BottomNav(args: BottomNavArgs(height: 520.h))),
+        //   ),
+        // )
       ],
     );
   }

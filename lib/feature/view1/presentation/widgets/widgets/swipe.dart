@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/constants/fonts.dart';
 import 'package:mpointe/core/constants/colors.dart';
+import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 import 'package:mpointe/core/common/widgets/reuseables/custometext/text.dart';
+import 'package:mpointe/core/common/widgets/animatedwidgets/fadeanimation.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/swipeimageargs.dart';
 // ignore_for_file: must_be_immutable
 
@@ -26,20 +28,30 @@ class SwipeOnImage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 20.toSizeW,
-                IText(
-                  value: args.label ?? "",
-                  fontFamily: IFonts.nunito,
-                  fontSize: args.fontSize,
-                  fontWeight: FontWeight.w600,
-                  fontColor: ColorHelper.black,
+                FadeAnimationWidget(
+                  args: FadeAnimationArgs(
+                    fade: args.fadeText!,
+                    child: IText(
+                      value: args.label ?? "",
+                      fontFamily: IFonts.nunito,
+                      fontSize: args.fontSize,
+                      fontWeight: FontWeight.w600,
+                      fontColor: ColorHelper.black,
+                    ),
+                  ),
                 ),
-                CircleAvatar(
-                  radius: args.radius,
-                  backgroundColor: ColorHelper.white.withOpacity(.7),
-                  child: Icon(
-                    Icons.arrow_forward_ios_outlined,
-                    color: ColorHelper.black.withOpacity(.5),
-                    size: 15.h,
+                FadeAnimationWidget(
+                  args: FadeAnimationArgs(
+                    fade: args.fadeCircle!,
+                    child: CircleAvatar(
+                      radius: args.radius,
+                      backgroundColor: ColorHelper.white.withOpacity(.7),
+                      child: Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        color: ColorHelper.black.withOpacity(.5),
+                        size: 15.h,
+                      ),
+                    ),
                   ),
                 )
               ],

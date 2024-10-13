@@ -12,6 +12,10 @@ class AnimationCtrl implements IAnimationCtrl {
 
   get icontroller => _icontroller;
 
+  late AnimationController _icontroller2;
+
+  get icontroller2 => _icontroller2;
+
   Curve? _curve;
 
   Curve? get curve => _curve;
@@ -28,17 +32,16 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///initialize controller
   @override
-  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 5));
+  Future<AnimationController> initializeAnimationCtrl(TickerProvider x, {int? s}) async => _icontroller = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
+
+  Future<AnimationController> initializeAnimationCtrl2(TickerProvider x, {int? s}) async => _icontroller2 = AnimationController(vsync: x, duration: Duration(seconds: s ?? 7));
 
   ///set direction
   @override
   TickerFuture setAnimationDirection({bool isforward = true, bool isReverse = false, bool isfling = false, bool isRepeated = false}) {
     if (isforward && (isReverse = false) && (isfling = false) && (isRepeated = false)) return _icontroller.forward();
-
     if (isReverse = true && (isforward = false) && (isRepeated = false) && (isfling = false)) return _icontroller.reverse();
-
     if (isfling = true && (isforward = false) && (isReverse = false) && (isRepeated = false)) return _icontroller.fling();
-
     if (isRepeated = true && (isforward = false) && (isReverse = false) && (isfling = false)) return _icontroller.repeat();
 
     return _icontroller.forward();
@@ -59,10 +62,21 @@ class AnimationCtrl implements IAnimationCtrl {
     bool isRepeated = false,
   }) async {
     await initializeAnimationCtrl(vsync, s: sec);
-
     await setAnimationDirection();
-
     await updateAnimationListener();
+  }
+
+  initAnimation2(
+    TickerProvider vsync, {
+    int? sec,
+    bool isforward = true,
+    bool isReverse = false,
+    bool isfling = false,
+    bool isRepeated = false,
+  }) async {
+    await initializeAnimationCtrl2(vsync, s: sec);
+    _icontroller2.forward();
+    _icontroller2.addListener(() => _icontroller2.status == AnimationStatus.completed ? _icontroller2.stop() : _icontroller2.forward());
   }
 
   ///Tunns animation
@@ -113,26 +127,10 @@ class AnimationCtrl implements IAnimationCtrl {
     Animation<double> x = Tween<double>(begin: 0, end: (_counter += _rnd.nextInt(value) + 2)).animate(CurvedAnimation(parent: controller ?? _icontroller, curve: Interval(beginInterval ?? 0.0, endInterval ?? 1.0, curve: curve ?? Curves.fastOutSlowIn)))
       ..addListener(() {})
       ..addStatusListener((status) {});
-      _icontroller.forward();
-
-  
+    _icontroller.forward();
 
     return x;
   }
-
-  //   ///implement animated counter
-  // Future<Animation<double>> implementAnimatedCounter(void Function()? fn, maxvalue) async {
-  //   double value = 0.0;
-  //   Random rnd = Random();
-  //   value += rnd.nextInt(maxvalue) + 2;
-  //   Animation<double> t = Tween<double>(
-  //     begin: 0,
-  //     end: value,
-  //   ).animate(CurvedAnimation(parent: _icontroller, curve: Curves.fastOutSlowIn));
-  //   _icontroller.forward();
-
-  //   return t;
-  // }
 
   updateControllerDuration(int s) {
     _icontrollerDuration = Duration(seconds: s);
