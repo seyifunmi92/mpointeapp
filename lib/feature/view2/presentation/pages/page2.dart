@@ -11,6 +11,7 @@ import 'package:mpointe/feature/view2/presentation/widgets/widgets/cosyareasdial
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/orangecontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/filtercontainer.dart';
 import 'package:mpointe/feature/view2/presentation/widgets/widgets/locations_avatar.dart';
+import 'package:mpointe/feature/view1/presentation/widgets/widgets/positionbottomnav.dart';
 // ignore_for_file: prefer_const_constructors
 
 class Page2 extends StatefulWidget {
@@ -23,7 +24,7 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2> {
   @override
   void initState() {
-    Logic.logicoperations.callFutureMethod(1, () => CosyAreaDialog().toDialog(context));
+  //  Logic.logicoperations.callFutureMethod(1, () => CosyAreaDialog().toDialog(context));
     super.initState();
   }
 
@@ -74,7 +75,7 @@ class _Page2State extends State<Page2> {
                     width: 30.w,
                     iconsSize: 16.h,
                   ),
-                  30.toSizeH,
+                  10.toSizeH,
 
                   ///
                   OrangeContainer(
@@ -84,7 +85,7 @@ class _Page2State extends State<Page2> {
                     iconsSize: 16.h,
                   ),
 
-                  30.toSizeH,
+                  10.toSizeH,
 
                   ///
                   OrangeContainer(
@@ -111,7 +112,6 @@ class _Page2State extends State<Page2> {
                   ).toRow(),
 
                   ///
-                  10.toSizeH,
 
                   ///
                   Row(
@@ -124,6 +124,13 @@ class _Page2State extends State<Page2> {
                 ],
               ),
             ),
+            floatingActionButton: Column(
+              children: [
+                SizedBox(height: 730.h),
+                PositionBottomNav(),
+              ],
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
           )
         ],
       );

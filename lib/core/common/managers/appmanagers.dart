@@ -3,6 +3,8 @@ import 'package:mpointe/core/app/app.dart';
 import 'package:mpointe/core/utils/modals.dart';
 import 'package:mpointe/core/app/materialapp.dart';
 import 'package:mpointe/core/constants/images.dart';
+import 'package:mpointe/core/route_handler/routes.dart';
+import 'package:mpointe/core/route_handler/route_logic.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/operations.dart';
 import 'package:mpointe/core/helpers/bLogic/operations/animationlogic.dart';
 import 'package:mpointe/core/helpers/bLogic/interfaces/ianimationcontroller.dart';
@@ -37,4 +39,9 @@ class AnimationManager {
   static IAnimationCtrl animate = get<IAnimationCtrl>();
   static AnimationCtrl control = get<AnimationCtrl>();
   static AnimationLogic logic = get<AnimationLogic>();
+}
+
+class RouteManager {
+  static Routes next = get<Routes>();
+  static RouteLogic logic = get<RouteLogic>();
 }

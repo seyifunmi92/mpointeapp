@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/constants/fonts.dart';
 import 'package:mpointe/core/constants/colors.dart';
-import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/contextextensions.dart';
 import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';

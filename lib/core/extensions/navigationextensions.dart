@@ -10,5 +10,7 @@ extension MQs on BuildContext {
 
   push(Widget route) => Navigator.push(this, MaterialPageRoute(builder: (builder) => route));
 
+  Future<void> pushReplacement(String route, {dynamic arguments}) async => await Navigator.of(this).pushReplacementNamed(route, arguments: arguments);
+
   Future<void> get pop async => Navigator.pop(this);
 }

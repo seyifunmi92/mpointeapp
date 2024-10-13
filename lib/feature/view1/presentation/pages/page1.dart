@@ -116,13 +116,6 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
             ],
           ),
         ),
-
-        // Scaffold(
-        //   backgroundColor: Colors.transparent,
-        //   body: SlideAnimationWidget(
-        //     args: SlideAnimationArgs(offset: val.bNavOffset, child: BottomNav(args: BottomNavArgs(height: 520.h))),
-        //   ),
-        // )
       ],
     );
   }

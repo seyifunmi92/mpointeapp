@@ -136,11 +136,8 @@ class AnimationLogic {
     _circle2fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.52, endinterval: 0.62, controller: AnimationManager.control.icontroller2);
     _sedoveFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.68, endinterval: 0.78, controller: AnimationManager.control.icontroller2);
     _circle3fade = await AnimationManager.animate.getFadeValue(beginInterval: 0.78, endinterval: 0.88, controller: AnimationManager.control.icontroller2);
-        _bNavOffset = await AnimationManager.animate.getFadeValue(beginInterval: 0.88, endinterval: 1.0, controller: AnimationManager.control.icontroller2);
-
+    _bNavOffset = await AnimationManager.animate.getFadeValue(beginInterval: 0.88, endinterval: 1.0, controller: AnimationManager.control.icontroller2);
   }
-
-
 
   showHiText(bool x) {
     _showText = x;
