@@ -6,7 +6,10 @@ import 'package:mpointe/core/common/widgets/reuseables/padding/pad.dart';
 
 class AppBody extends StatelessWidget {
   Widget? child;
-  AppBody({super.key, this.child, });
+  AppBody({
+    super.key,
+    this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +28,6 @@ class AppBody extends StatelessWidget {
           child: child ?? Container(),
         ),
       ),
-    
     );
   }
 }

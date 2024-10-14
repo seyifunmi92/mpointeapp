@@ -8,7 +8,6 @@ extension ContextExt on BuildContext {
 }
 
 extension Sizer on int {
-
   Widget get toSizeH => SizedBox(height: h);
 
   Widget get toSizeW => SizedBox(

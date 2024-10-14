@@ -1,8 +1,6 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/constants/fonts.dart';
 import 'package:mpointe/core/constants/colors.dart';
-import 'package:mpointe/core/enums/device_orientation.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
@@ -39,7 +37,6 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
     AnimationManager.logic.updateFadeAnimation().then((x) => setState(() {}));
     AnimationManager.logic.updateOffsetAnimations(() => setState(() {
           AnimationManager.logic.showHiText(AnimationManager.logic.hitext!.value.dy.toInt() == 0.0 ? true : false);
-       //   AnimationManager.logic.showPerfectPlaceText(AnimationManager.logic.perfectPlaceText!.value.dy.toInt() == 0.0 ? true : false);
         }));
     AnimationManager.logic.updateCounterAnimation(() => setState(() {}));
     Logic.logicoperations.callFutureMethod(7, () => ShowModals.modals.showCupertino(context, child: BottomNav(args: BottomNavArgs(height: 505.h))));
@@ -54,8 +51,6 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
-  log(dev_type.toString());
     var val = AnimationManager.logic;
     return Stack(
       children: [
@@ -97,21 +92,6 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
 
               5.toSizeH,
 
-              // val.showText2 == false
-              //     ? 0.toSizeH
-              //     : SlideAnimationWidget(
-              //         args: SlideAnimationArgs(
-              //           offset: val.perfectPlaceText,
-              //           child: IText(
-              //             value: "let's select your\nperfect place",
-              //             fontSize: 37.fsize,
-              //             fontColor: ColorHelper.black,
-              //             fontFamily: IFonts.nunito,
-              //             align: TextAlign.start,
-              //           ),
-              //         ),
-              //       ),
-
               FadeAnimationWidget(
                 args: FadeAnimationArgs(
                   fade: val.perfectplacefade!,
@@ -132,10 +112,33 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
                 children: [
                   ///BUY OFFERS
                   FadeAnimationWidget(
-                    args: FadeAnimationArgs(fade: val.buyContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "BUY", textmiddle: val.buyCount?.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: val.buyContainerTurnsTextTop?.value, fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value, fontsizetextbelow: val.buyContainerTurnsTextBottom?.value, fontColor: ColorHelper.white)).toCircle(radius: val.buyContainerTurns!.value, color: Colors.orange)),
+                    args: FadeAnimationArgs(
+                        fade: val.buyContainerFade!,
+                        child: BuyandRentContainer(
+                                args: OrangeCircleArgs(
+                                    texttop: "BUY",
+                                    textmiddle: val.buyCount?.value.toStringAsFixed(0),
+                                    textbelow: "offers",
+                                    fontsizetexttop: val.buyContainerTurnsTextTop?.value,
+                                    fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value,
+                                    fontsizetextbelow: val.buyContainerTurnsTextBottom?.value,
+                                    fontColor: ColorHelper.white))
+                            .toCircle(radius: val.buyContainerTurns!.value, color: Colors.orange)),
                   ),
 
-                  FadeAnimationWidget(args: FadeAnimationArgs(fade: val.rentContainerFade!, child: BuyandRentContainer(args: OrangeCircleArgs(texttop: "RENT", textmiddle: val.rentCount!.value.toStringAsFixed(0), textbelow: "offers", fontsizetexttop: val.buyContainerTurnsTextTop?.value, fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value, fontsizetextbelow: val.buyContainerTurnsTextBottom?.value, fontColor: Colors.brown.withOpacity(.5))).toContainer(height: val.rentContainerTurns?.value, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))))
+                  FadeAnimationWidget(
+                      args: FadeAnimationArgs(
+                          fade: val.rentContainerFade!,
+                          child: BuyandRentContainer(
+                                  args: OrangeCircleArgs(
+                                      texttop: "RENT",
+                                      textmiddle: val.rentCount!.value.toStringAsFixed(0),
+                                      textbelow: "offers",
+                                      fontsizetexttop: val.buyContainerTurnsTextTop?.value,
+                                      fontsizetextmiddle: val.buyContainerTurnsTextMiddle?.value,
+                                      fontsizetextbelow: val.buyContainerTurnsTextBottom?.value,
+                                      fontColor: Colors.brown.withOpacity(.5)))
+                              .toContainer(height: val.rentContainerTurns?.value, width: 170.w, radius: 20, color: ColorHelper.white.withOpacity(.5))))
                 ],
               )
             ],

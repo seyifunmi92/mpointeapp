@@ -189,7 +189,7 @@ class AnimationLogic {
     _avatarFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.18, endinterval: 0.24, curve: Curves.easeInOutCubic);
     _buyContainerFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.4, endinterval: 0.6);
     _rentContainerFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.4, endinterval: 0.6);
-    _perfectplacefade = await AnimationManager.animate.getFadeValue(beginInterval: 0.32, endinterval: 0.55,curve: Curves.easeInOutCirc);
+    _perfectplacefade = await AnimationManager.animate.getFadeValue(beginInterval: 0.32, endinterval: 0.55, curve: Curves.easeInOutCirc);
   }
 
   updateOffsetAnimations(void Function()? callback) async {

@@ -86,7 +86,7 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     ),
                   ),
                   30.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 100,
@@ -95,7 +95,7 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     iconsSize: 16.h,
                   ),
                   30.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 120,
@@ -104,7 +104,7 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     iconsSize: 16.h,
                   ),
                   30.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 240,
@@ -113,7 +113,7 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     iconsSize: 16.h,
                   ),
                   10.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 320,
@@ -121,9 +121,9 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     width: val.orangeCircleTurns!.value,
                     iconsSize: 16.h,
                   ),
-            
+
                   10.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 100,
@@ -132,7 +132,7 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     iconsSize: 16.h,
                   ),
                   30.toSizeH,
-            
+
                   ///
                   OrangeContainer(
                     sidewidth: 170,
@@ -140,9 +140,9 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                     width: val.orangeCircleTurns!.value,
                     iconsSize: 16.h,
                   ),
-            
+
                   130.toSizeH,
-            
+
                   ///
                   FadeAnimationWidget(
                     args: FadeAnimationArgs(
@@ -152,12 +152,9 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
                       ).toRow(),
                     ),
                   ),
-            
+
                   5.toSizeH,
-            
-                  ///
-            
-                  ///
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
