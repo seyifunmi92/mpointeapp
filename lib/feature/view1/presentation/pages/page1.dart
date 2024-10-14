@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mpointe/core/constants/fonts.dart';
 import 'package:mpointe/core/constants/colors.dart';
+import 'package:mpointe/core/enums/device_orientation.dart';
 import 'package:mpointe/core/common/managers/appmanagers.dart';
 import 'package:mpointe/core/extensions/layoutextensions.dart';
 import 'package:mpointe/core/extensions/widgetextensions.dart';
@@ -16,6 +18,7 @@ import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/appbarargs
 import 'package:mpointe/feature/view1/presentation/widgets/widgets/orange_circle.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/bottom_nav_args.dart';
 import 'package:mpointe/feature/view1/presentation/widgets/widgetargs/orange_circle_args.dart';
+
 // ignore_for_file: prefer_const_constructors
 
 class Page1 extends StatefulWidget {
@@ -51,6 +54,8 @@ class _Page1State extends State<Page1> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
+  log(dev_type.toString());
     var val = AnimationManager.logic;
     return Stack(
       children: [

@@ -66,116 +66,120 @@ class _Page2State extends State<Page2> with TickerProviderStateMixin {
         ///
         Scaffold(
           backgroundColor: Colors.black87.withOpacity(.5),
-          body: Pad(
-            child: Column(
-              children: [
-                60.toSizeH,
-                FadeAnimationWidget(
-                  args: FadeAnimationArgs(
-                    fade: val.fadeTextField!,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        FadeAnimationWidget(
-                          args: FadeAnimationArgs(fade: val.fadeTextField!, child: ITextField()),
-                        ),
-                        FilterContainer(),
-                      ],
+          body: SingleChildScrollView(
+            child: Pad(
+              child: Column(
+                children: [
+                  60.toSizeH,
+                  FadeAnimationWidget(
+                    args: FadeAnimationArgs(
+                      fade: val.fadeTextField!,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          FadeAnimationWidget(
+                            args: FadeAnimationArgs(fade: val.fadeTextField!, child: ITextField()),
+                          ),
+                          FilterContainer(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                30.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 100,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-                30.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 120,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-                30.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 240,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-                10.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 320,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-
-                10.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 100,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-                30.toSizeH,
-
-                ///
-                OrangeContainer(
-                  sidewidth: 170,
-                  height: 35.h,
-                  width: val.orangeCircleTurns!.value,
-                  iconsSize: 16.h,
-                ),
-
-                130.toSizeH,
-
-                ///
-                FadeAnimationWidget(
-                  args: FadeAnimationArgs(
-                    fade: val.fademapcircle1!,
-                    child: LocationAvatar(
-                      icon: Icons.accessible,
-                    ).toRow(),
+                  30.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 100,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
                   ),
-                ),
-
-                5.toSizeH,
-
-                ///
-
-                ///
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    FadeAnimationWidget(
-                      args: FadeAnimationArgs(fade: val.fademapcircle2!, child: LocationAvatar()),
+                  30.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 120,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
+                  ),
+                  30.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 240,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
+                  ),
+                  10.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 320,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
+                  ),
+            
+                  10.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 100,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
+                  ),
+                  30.toSizeH,
+            
+                  ///
+                  OrangeContainer(
+                    sidewidth: 170,
+                    height: 35.h,
+                    width: val.orangeCircleTurns!.value,
+                    iconsSize: 16.h,
+                  ),
+            
+                  130.toSizeH,
+            
+                  ///
+                  FadeAnimationWidget(
+                    args: FadeAnimationArgs(
+                      fade: val.fademapcircle1!,
+                      child: LocationAvatar(
+                        icon: Icons.accessible,
+                      ).toRow(),
                     ),
-                    FadeAnimationWidget(
-                      args: FadeAnimationArgs(fade: val.fadevariantcontainer!, child: VariantsContainer()),
-                    ),
-                  ],
-                )
-              ],
+                  ),
+            
+                  5.toSizeH,
+            
+                  ///
+            
+                  ///
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      FadeAnimationWidget(
+                        args: FadeAnimationArgs(fade: val.fademapcircle2!, child: LocationAvatar()),
+                      ),
+                      FadeAnimationWidget(
+                        args: FadeAnimationArgs(fade: val.fadevariantcontainer!, child: VariantsContainer()),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-          floatingActionButton: Column(
-            children: [
-              SizedBox(height: 730.h),
-              PositionBottomNav(),
-            ],
+          floatingActionButton: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 730.h),
+                PositionBottomNav(),
+              ],
+            ),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         )

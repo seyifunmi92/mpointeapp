@@ -124,11 +124,13 @@ class _BottomNavState extends State<BottomNav> with TickerProviderStateMixin {
             offset: val.bNavOffset2,
             child: Scaffold(
               backgroundColor: Colors.transparent,
-              floatingActionButton: Column(
-                children: [
-                  SizedBox(height: 720.h),
-                  PositionBottomNav(),
-                ],
+              floatingActionButton: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 720.h),
+                    PositionBottomNav(),
+                  ],
+                ),
               ),
               floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
             ),
