@@ -138,7 +138,8 @@ class AnimationCtrl implements IAnimationCtrl {
 
   ///count offset animation
   @override
-  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve, double? beginInterval, double? endInterval, void Function()? callback}) async => await getCounterValue(value, controller: _icontroller, beginInterval: beginInterval, endInterval: endInterval, callback: callback).then((x) => setAnimationDirection());
+  Future implementAnimatedCounter({AnimationController? controller, value, Curve? curve, double? beginInterval, double? endInterval, void Function()? callback}) async =>
+      await getCounterValue(value, controller: _icontroller, beginInterval: beginInterval, endInterval: endInterval, callback: callback).then((x) => setAnimationDirection());
 
   ///get counter value
   @override

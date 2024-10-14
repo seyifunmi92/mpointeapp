@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mpointe/core/enums/device_orientation.dart';
 // ignore_for_file: non_constant_identifier_names
 
-
 extension Sizer on int {
   MediaQueryData get mq => MediaQueryData.fromView(WidgetsBinding.instance.platformDispatcher.views.single);
 
