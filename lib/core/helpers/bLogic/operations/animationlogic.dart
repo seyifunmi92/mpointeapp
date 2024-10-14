@@ -176,13 +176,9 @@ class AnimationLogic {
     _stPtrsbugCard = await AnimationManager.animate.getTurnsValue(y: 130.w, listener: callback, begininterval: 0.0, endinterval: 0.08, curve: Curves.easeInOutCirc);
     _buyContainerTurns = await AnimationManager.animate.getTurnsValue(y: 100, listener: callback, begininterval: 0.28, endinterval: 0.5);
     _rentContainerTurns = await AnimationManager.animate.getTurnsValue(y: 170.h, listener: callback, begininterval: 0.28, endinterval: 0.5);
-    _buyContainerTurnsTextMiddle = await AnimationManager.animate.getTurnsValue(y: 45.fsize, listener: callback, begininterval: 0.3, endinterval: 0.5);
-    _buyContainerTurnsTextTop = await AnimationManager.animate.getTurnsValue(y: 12.fsize, listener: callback, begininterval: 0.3, endinterval: 0.5);
-    _buyContainerTurnsTextBottom = await AnimationManager.animate.getTurnsValue(y: 11.fsize, listener: callback, begininterval: 0.3, endinterval: 0.5);
-
-    //_stPtrsbugText = await AnimationManager.animate.getTurnsValue(y: 10.fsize, listener: callback, begininterval: 0.06, endinterval: 0.11);
-    // _stPtrsbugIcon = await AnimationManager.animate.getTurnsValue(y: 16.fsize, listener: callback, begininterval: 0.11, endinterval: 0.17);
-    // _avatarTurns = await AnimationManager.animate.getTurnsValue(y: 25, listener: callback, begininterval: 0.28, endinterval: 0.35);
+    _buyContainerTurnsTextMiddle = await AnimationManager.animate.getTurnsValue(y: 45.fsize, listener: callback, begininterval: 0.28, endinterval: 0.5);
+    _buyContainerTurnsTextTop = await AnimationManager.animate.getTurnsValue(y: 12.fsize, listener: callback, begininterval: 0.28, endinterval: 0.5);
+    _buyContainerTurnsTextBottom = await AnimationManager.animate.getTurnsValue(y: 11.fsize, listener: callback, begininterval: 0.28, endinterval: 0.5);
   }
 
   updateFadeAnimation() async {
@@ -193,7 +189,7 @@ class AnimationLogic {
     _avatarFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.18, endinterval: 0.24, curve: Curves.easeInOutCubic);
     _buyContainerFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.4, endinterval: 0.6);
     _rentContainerFade = await AnimationManager.animate.getFadeValue(beginInterval: 0.4, endinterval: 0.6);
-    _perfectplacefade = await AnimationManager.animate.getFadeValue(beginInterval: 0.32, endinterval: 0.55);
+    _perfectplacefade = await AnimationManager.animate.getFadeValue(beginInterval: 0.32, endinterval: 0.55,curve: Curves.easeInOutCirc);
   }
 
   updateOffsetAnimations(void Function()? callback) async {
@@ -234,9 +230,9 @@ class AnimationLogic {
   ///animation logic for map screen
   updateFadeMapScreen(void Function()? callback) async {
     _fadeTextField = await AnimationManager.animate.getFadeValue(beginInterval: 0.0, endinterval: 0.1, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
-    _fademapcircle1 = await AnimationManager.animate.getFadeValue(beginInterval: 0.1, endinterval: 0.2, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
-    _fademapcircle2 = await AnimationManager.animate.getFadeValue(beginInterval: 0.2, endinterval: 0.3, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
-    _fadevariantcontainer = await AnimationManager.animate.getFadeValue(beginInterval: 0.3, endinterval: 0.4, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fademapcircle1 = await AnimationManager.animate.getFadeValue(beginInterval: 0.1, endinterval: 0.3, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fademapcircle2 = await AnimationManager.animate.getFadeValue(beginInterval: 0.1, endinterval: 0.3, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
+    _fadevariantcontainer = await AnimationManager.animate.getFadeValue(beginInterval: 0.1, endinterval: 0.3, controller: AnimationManager.control.icontroller3, curve: Curves.easeInOutCirc);
   }
 
   updateTurnsValuesMapScreen(void Function()? callback) async {
